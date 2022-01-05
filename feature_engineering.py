@@ -62,7 +62,7 @@ def removeDuplicates(dataFrame):
 
 
 # Get a df with null columns equal or above 75 percentage
-def getNullValuesAboveSeventhFivePercent(dataFrame, percentage=0.75):
+def getNullValuesAboveThreshold(dataFrame, percentage):
     message = 'There is(are) no feature(s) with null value(s) above 75%'
     newData = pd.DataFrame(data=feh.calculateNullPercentages(dataFrame))
     newData.reset_index(inplace=True)
@@ -74,11 +74,11 @@ def getNullValuesAboveSeventhFivePercent(dataFrame, percentage=0.75):
 
 
 # Remove features with 75 or more percentage of missing values
-def removeNullValuesAboveSeventhFivePercent(dataFrame):
-    if type(getNullValuesAboveSeventhFivePercent(dataFrame)) == str:
+def removeNullValuesAbovePercentageThreshold(dataFrame, threshold=0.75):
+    if type(getNullValuesAboveThreshold(dataFrame, threshold)) == str:
         print('No feature has been removed. All are below 75%')
     else:
-        for index, row in getNullValuesAboveSeventhFivePercent(dataFrame).iterrows():
+        for index, row in getNullValuesAboveThreshold(dataFrame).iterrows():
             print(
                 f"The column {row['Feature']} has been removed because has {row['Percentage']} percents of missing "
                 f"values")

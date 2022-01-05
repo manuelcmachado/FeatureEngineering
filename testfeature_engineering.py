@@ -32,7 +32,7 @@ def displayMissingDataInDataframe(fileLocation):
     dataset = getData(fileLocation)
     percentages = fe.getMissingFeaturesCountsDataFrame(dataset)
     print('\n')
-    print('Features with missing values as Dataframe:')
+    print('Listing Features with missing values as Dataframe:')
     print(percentages)
 
 
